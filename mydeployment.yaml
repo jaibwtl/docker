@@ -5,6 +5,10 @@ metadata:
   labels:
     app: nginx
 spec:
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim
   replicas: 2
   selector:
     matchLabels:
@@ -17,5 +21,8 @@ spec:
       containers:
       - name: web
         image: nginx:1.20
+        volumeMounts:
+        - mountPath: "/var/log/nginx"
+          name: task-pv-storage
         ports:
         - containerPort: 80
