@@ -4,6 +4,7 @@ metadata:
   name: task-pv-claim
 spec:
   storageClassName: manual
+  volumeName: task-pv-volume
   accessModes:
     - ReadWriteOnce
   resources:
