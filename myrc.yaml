@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jai
+spec:
+  replicas: 3
+  selector:
+    app: jai
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: jai
+    spec:
+      containers:
+      - name: web
+        image: nginx
+        ports:
+        - containerPort: 80
