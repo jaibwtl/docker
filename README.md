@@ -3,10 +3,12 @@ Docker Repo
 
 # install k8s master 
 <pre>
-wget https://raw.githubusercontent.com/Jaibw/docker/main/install_k8s_master_ubuntu_20.04.sh <br/>
+wget https://raw.githubusercontent.com/Jaibw/docker/main/install_k8s_master_ubuntu_20.04.sh  
 sh install_k8s_master_ubuntu_20.04.sh
 </pre>
 
 # install k8s worker 
+<pre>
 wget https://raw.githubusercontent.com/Jaibw/docker/main/install_k8s_worker_ubuntu_20.04.sh
 sh install_k8s_worker_ubuntu_20.04.sh
+</pre>
