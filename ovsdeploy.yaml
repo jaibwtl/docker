@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: database-config-ovs
+data:
+  DATABASE: "ovs"
+  DBUSER: "postgres"
+  DBPASSWORD: "bSqdYYqsqU5VPj2g"
+  DBHOST: "13.57.242.8"
+  DBPORT: "30099"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ovs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ovs
+  template:
+    metadata:
+      name: ovs
+      labels:
+        app: ovs
+    spec:
+      containers:
+      - name: ovs
+        image: jaibw/ovsoct27
+        ports:
+        - containerPort: 8081
+        envFrom:
+          - configMapRef:
+              name: database-config-ovs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ovs-nodeport-service
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 8081
+    port: 8081
+  selector:
+    app: ovs
