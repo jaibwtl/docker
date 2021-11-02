@@ -74,8 +74,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl cluster-info
 
 # install calico
-kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml 
-kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+# kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml 
+# kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+
+# install weave
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
 
 kubectl get pods --all-namespaces
