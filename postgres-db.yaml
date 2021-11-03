@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-jai
+spec:
+  selector:
+    matchLabels:
+      app: postgres-jai
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgres-jai
+    spec:
+      containers:
+      - image: postgres:latest
+        name: database
+        env: 
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-configmap-jai
+              key: password
+        ports:
+        - containerPort: 5432
+          name: postgres
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: pv-claim-jai
