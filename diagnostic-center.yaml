@@ -18,7 +18,7 @@ spec:
         name: database
         ports:
         - containerPort: 8093
-          name: diagnostic-center
+          name: app-port
 ---
 apiVersion: v1
 kind: Service
