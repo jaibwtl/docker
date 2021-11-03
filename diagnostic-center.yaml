@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnostic-center
+spec:
+  selector:
+    matchLabels:
+      app: diagnostic-center
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: diagnostic-center
+    spec:
+      containers:
+      - image: jaibw/diagnostic-center
+        name: database
+        ports:
+        - containerPort: 8093
+          name: diagnostic-center
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: diagnostic-center
+spec:
+  type: NodePort
+  ports:
+  - port: 8093
+  selector:
+    app: diagnostic-center 
