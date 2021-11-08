@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: app-config-jai
 data:
-  DATABASE: "postgres"
+  DBNAME: "postgres"
   DBUSER: "postgres"
-  DBPASSWORD: "XFM46TKpnWFX8EJa"
+  DBPASS: "XFM46TKpnWFX8EJa"
   DBHOST: "postgres-jai"
   DBPORT: "5432"
 ---
