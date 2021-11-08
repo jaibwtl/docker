@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+
+  app:
+    image: jaibw/diagnostic-center
+    build:
+      context: .
+    restart: always
+    environment:
+      DBHOST: db
+      DBPORT: 5432
+      DBNAME: postgres
+      DBUSER: postgres
+      DBPASS: password
+    ports:
+      - 8093:8093
+    depends_on:
+      - db
