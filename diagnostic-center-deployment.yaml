@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-jai
+data:
+  DATABASE: "postgres"
+  DBUSER: "postgres"
+  DBPASSWORD: "XFM46TKpnWFX8EJa"
+  DBHOST: "postgres-jai"
+  DBPORT: "5432"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-jai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-jai
+  template:
+    metadata:
+      name: myapp-jai
+      labels:
+        app: myapp-jai
+    spec:
+      containers:
+      - name: ovs
+        image: jaibw/diagnostic-center:1 
+        ports:
+        - containerPort: 8093 
+        envFrom:
+          - configMapRef:
+              name: app-config-jai
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service-jai
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 8093 
+    port: 8093 
+  selector:
+    app: myapp-jai
