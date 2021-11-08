@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: ovs
-        image: jaibw/diagnostic-center:1 
+        image: jaibw/diagnostic-center:2 
         ports:
         - containerPort: 8093 
         envFrom:
