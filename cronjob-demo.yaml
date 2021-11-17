@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: jai-cron
 spec:
   schedule: "*/1 * * * *"
   jobTemplate:
