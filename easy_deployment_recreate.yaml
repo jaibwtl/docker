@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jai-deployment2
+  labels:
+    myapp: jai
+spec:
+  replicas: 10
+  strategy:
+    type: Recreate  
+  selector:
+    matchLabels:
+      myapp: jai
+  template:
+    metadata:
+      labels:
+        myapp: jai
+    spec:
+      containers:
+      - name: web
+        image: nginx
+        ports:
+        - containerPort: 80
