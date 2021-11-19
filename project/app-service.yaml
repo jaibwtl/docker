@@ -8,5 +8,5 @@ spec:
   - targetPort: 8093 
     port: 8093 
   selector:
-    app: diagnostic-center
+    app: diagnostic-app
 
