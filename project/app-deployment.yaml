@@ -1,0 +1,35 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diagnostic-center-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: diagnostic-center
+  template:
+    metadata:
+      name: diagnostic-center
+      labels:
+        app: diagnostic-center
+    spec:
+      containers:
+      - name: ovs
+        image: jaibw/diagnostic-center:2 
+        ports:
+        - containerPort: 8093 
+        env:
+          - name: DBNAME
+            value: postgres
+          - name: DBPORT
+            value: 5432
+          - name: DBUSER
+            value: postgres 
+          - name: DBHOST
+            value: postgres-svc
+          - name: password 
+            valueFrom:
+              configMapKeyRef:
+                name: project-configmap
+                key: password
+        
