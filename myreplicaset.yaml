@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: jai-rc
+  name: myname
   labels: 
     app: myapp 
 spec:
   template:
     metadata:
-      name: jai-pod
+      name: pod
       labels: 
-        myapp: jai
+        myapp: myname
     spec:
       containers:
       - name: web
         image: nginx 
-  replicas: 4
+  replicas: 2
   selector: 
     matchLabels:
-      myapp: jai 
+      myapp: myname 
