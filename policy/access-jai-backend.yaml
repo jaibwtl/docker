@@ -5,9 +5,9 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      run=jai-backend
+      run: jai-backend
   ingress:
   - from:
     - podSelector:
         matchLabels:
-          run=jai-frontend
+          run: jai-frontend
