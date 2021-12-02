@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pv-claim-jai
+  name: pvc-myname
 spec:
   storageClassName: manual
-  volumeName: pv-volume-jai
+  volumeName: pv-myname
   accessModes:
     - ReadWriteOnce
   resources:
