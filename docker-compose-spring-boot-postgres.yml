@@ -10,8 +10,6 @@ services:
 
   app:
     image: jaibw/diagnostic-center
-    build:
-      context: .
     restart: always
     environment:
       DBHOST: db
