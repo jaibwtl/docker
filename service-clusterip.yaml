@@ -1,11 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api
+  namespace: myname
+  labels:
+    myapp: backend-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      namespace: myname
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: web
+        image: nginx
+        ports:
+        - containerPort: 80
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: jai-service-clusterip
+  namespace: myname
+  name: backendapi
 spec:
   type: ClusterIP
   selector:
-    app: nginx
+    app: backend
   ports:
     - protocol: TCP
       port: 80
