@@ -15,9 +15,12 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: jaibw/angular-app:1 
+        image: jaibw/angular-app:12
         ports:
         - containerPort: 80
+        env:
+        - name: SPRING_BOOT_URL
+          value: "http://10.104.32.71:8080"
 
 ---
 apiVersion: v1
@@ -27,7 +30,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - targetPort: 80 
+  - targetPort: 80
     port: 80
   selector:
     app: frontend
