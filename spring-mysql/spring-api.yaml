@@ -3,11 +3,11 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
-  DBNAME: "postgres"
-  DBUSER: "postgres"
-  DBPASS: "XFM46TKpnWFX8EJa"
-  DBHOST: "postgres-jai"
-  DBPORT: "5432"
+  DBNAME: "demo"
+  DBUSER: "root"
+  DBPASS: "bSqdYYqsqU5VPj2g"
+  DBHOST: "mysql"
+  DBPORT: "3306"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -26,9 +26,9 @@ spec:
     spec:
       containers:
       - name: ovs
-        image: jaibw/spring-boot-data:1 
+        image: jaibw/spring-boot-data:2
         ports:
-        - containerPort: 8080 
+        - containerPort: 8080
         envFrom:
           - configMapRef:
               name: app-config
@@ -40,7 +40,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - targetPort: 8080 
+  - targetPort: 8080
     port: 8080
   selector:
     app: myapp
