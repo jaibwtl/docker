@@ -1,0 +1,48 @@
+[MASTER] $ sudo -s -H
+[MASTER] # apt update
+[MASTER] # apt install -y default-jdk 
+[MASTER] # wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+[MASTER] # sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+[MASTER] # apt update
+[MASTER] # apt install -y jenkins
+[MASTER] # systemctl start jenkins
+[MASTER] # systemctl status jenkins
+[MASTER] # cat /var/lib/jenkins/secrets/initialAdminPassword
+Access Jenkins Master http://<master-public-ip>:8080/
+ setup your jenkins master from web interface 
+[SLAVE] 
+[SLAVE] $ sudo -s -H
+[SLAVE] # apt update
+[SLAVE] # apt install -y default-jdk
+[SLAVE] # vim /etc/ssh/sshd_config              --- change: PasswordAuthentication yes
+[SLAVE] # service ssh restart
+[SLAVE] # useradd jenkins
+[SLAVE] # mkdir /home/jenkins            
+[SLAVE] # chown jenkins:jenkins /home/jenkins
+[SLAVE] # passwd jenkins                        --- DevOps#122021
+[SLAVE] # visudo                                --- jenkins ALL=(ALL) NOPASSWD: ALL
+[MASTER] # sudo su - jenkins
+[MASTER] $ ssh-keygen 
+[MASTER] $ ssh-copy-id jenkins@<slave-private-ip>      
+[MASTER] $ cat ~/.ssh/id_rsa 
+-----BEGIN OPENSSH PRIVATE KEY-----
+SAVE IT IN NOTEPAD 
+-----END OPENSSH PRIVATE KEY-----
+
+Open Jenkins Master interface 
+http://<master-public-ip>:8080/
+1. Manage Jenkins > Manage Nodes and Cloud 
+2. Click on New Node
+   a.) Name: slave   , Permanent Agent - select it 
+       Remote root directory: /home/jenkins 
+       Labels: slave
+       Launch method: Launch agent via ssh 
+          Host: <slave-private-ip>
+          Add Credentials: 
+               Kind: SSH User with private key 
+               Username: Jenkins 
+               Private Key > Enter directly > Paste private key 
+
+
+Create a testing job - freestyle 
+> General > Restrict where this project can be run  - slave
