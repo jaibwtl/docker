@@ -1,3 +1,5 @@
+[MASTER] $ wget https://raw.githubusercontent.com/Jaibw/docker/main/jenkins-master-slave-steps.txt
+[MASTER] $ cat jenkins-master-slave-steps.txt
 [MASTER] $ sudo -s -H
 [MASTER] # apt update
 [MASTER] # apt install -y default-jdk 
@@ -11,6 +13,8 @@
 Access Jenkins Master http://<master-public-ip>:8080/
  setup your jenkins master from web interface 
 [SLAVE] 
+[SLAVE] $ wget https://raw.githubusercontent.com/Jaibw/docker/main/jenkins-master-slave-steps.txt
+[SLAVE] $ cat jenkins-master-slave-steps.txt
 [SLAVE] $ sudo -s -H
 [SLAVE] # apt update
 [SLAVE] # apt install -y default-jdk
@@ -45,4 +49,10 @@ http://<master-public-ip>:8080/
 
 
 Create a testing job - freestyle 
-> General > Restrict where this project can be run  - slave
+> General > Restrict where this project can be run  - slave 
+
+
+
+
+ 
+
