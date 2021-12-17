@@ -6,3 +6,6 @@ sudo apt update
 sudo apt -y install vim git curl wget kubectl
 sudo apt-mark hold kubectl
 mkdir ~/.kube 
+wget https://raw.githubusercontent.com/Jaibw/docker/main/k8s-jenkins/config
+mv config .kube/
+kubectl get nodes
