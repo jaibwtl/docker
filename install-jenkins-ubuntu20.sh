@@ -5,9 +5,9 @@ sudo apt update
 sudo apt install -y jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
-sudo usermod -aG docker jenkins
-sudo mkdir /var/lib/jenkins/.kube
-sudo cp /home/ubuntu/.kube/config /var/lib/jenkins/.kube/
-sudo chown -R jenkins:jenkins /var/lib/jenkins/.kube
+#sudo usermod -aG docker jenkins
+#sudo mkdir /var/lib/jenkins/.kube
+#sudo cp /home/ubuntu/.kube/config /var/lib/jenkins/.kube/
+#sudo chown -R jenkins:jenkins /var/lib/jenkins/.kube
 ## Open your jenkins url http://<public-ip-machine>:8080/
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
