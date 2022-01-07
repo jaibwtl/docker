@@ -39,6 +39,7 @@ kind: StatefulSet
 metadata:
   name: postgres-db
 spec:
+  serviceName: postgresql-db-service
   selector:
     matchLabels:
       app: postgres-db
@@ -65,7 +66,7 @@ spec:
       volumes:
       - name: db-storage
         persistentVolumeClaim:
-          claimName: pv-claim-db
+          claimName: pvc-db
           
 ---
 apiVersion: v1
