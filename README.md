@@ -1,6 +1,6 @@
 # docker install
 <pre>
-wget https://raw.githubusercontent.com/Jaibw/docker/main/install_ubuntu_20.04.sh && sh install_ubuntu_20.04.sh
+wget https://raw.githubusercontent.com/Jaibw/docker/main/install_docker_ubuntu_20.04.sh && sh install_docker_ubuntu_20.04.sh
 </pre>
 
 # install k8s master 
