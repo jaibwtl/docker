@@ -7,3 +7,6 @@ wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/server.key
 
 docker build -t securehttpd:1 .
 docker run --name website01-secure -d -p 8095:80 -p 8096:443 securehttpd:1
+
+http://<public_ip>:8095/
+https://<public_ip>:8096/
