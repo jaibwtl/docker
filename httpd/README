@@ -5,8 +5,12 @@ wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/httpd.conf
 wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/server.cert
 wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/server.key
 
-docker build -t securehttpd:1 .
-docker run --name website01-secure -d -p 8095:80 -p 8096:443 securehttpd:1
+docker build -t DOCKERID/securehttpd:1 .
+docker login
+docker push DOCKERID/securehttpd:1
+# Open chrome and visit hub.docker.com to verfiy your image 
+
+docker run --name website-secure -d -p 8098:80 -p 8099:443 DOCKERID/securehttpd:1
 
 http://<public_ip>:8095/
 https://<public_ip>:8096/
