@@ -1,0 +1,2 @@
+docker build -t securehttpd:1 .
+docker run --name website01-secure -d -p 8095:80 -p 8096:443 securehttpd:1
