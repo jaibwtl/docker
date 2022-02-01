@@ -2,6 +2,8 @@ mkdir sercurehttpd
 cd sercurehttpd
 wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/Dockerfile
 wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/httpd.conf
+wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/server.cert
+wget https://raw.githubusercontent.com/Jaibw/docker/main/httpd/server.key
 
 docker build -t securehttpd:1 .
 docker run --name website01-secure -d -p 8095:80 -p 8096:443 securehttpd:1
