@@ -9,7 +9,7 @@ data:
 apiVersion: v1
 kind: Pod 
 metadata:
-  name: testpod-myname 
+  name: myname 
 spec:
   containers:
   - image: nginx
